@@ -11,5 +11,6 @@ public:
 	story();
 	~story();
 	void intro();
+	void keycommands();
 };
 

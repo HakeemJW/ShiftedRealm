@@ -12,6 +12,11 @@ void story::intro()
 	cout << endl;
 }
 
+void story::keycommands()
+{
+	cout << "Press" << " M " << "at any time to open the menu.\n\n";
+}
+
 story::story()
 {
 }
