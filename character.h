@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 class character
 {
 public:
@@ -8,6 +9,7 @@ public:
 	int gold = 100;
 	int clas = 0;
 	int exp;
+	int randnum = 0;
 	void pickclass();
 	void namechar();
 	void readstat();
