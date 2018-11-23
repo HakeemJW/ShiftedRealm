@@ -10,11 +10,6 @@
 
 
 using namespace std;
-
-#define KEY_ESC 27
-#define KEY_A 97
-#define KEY_M 109
-
 int clas = 0;
 int x;
 
@@ -52,44 +47,7 @@ int main()
 	c->setstat();
 	c->readstat();
 	s->keycommands();
-
-	char key = _getch();
-	int value = key;
-
-	while (value != KEY_ESC)
-	{
-		switch (_getch())
-		{
-		case KEY_M:
-			cout << "What would you like to do\n\n";
-			cout << "Shop(1) \t Travel(2) \t Adventure(3) \t Rest(4)" << endl;
-			cin >> x;
-			switch (x)
-			{
-				case 1:
-					cout << "You have gold\n\n";
-					break;
-				case 2:
-					cout << "Where would you like to go?\n\n";
-					break;
-				case 3: 
-					cout << "What type of adventure do you seek?\n\n";
-					break;
-				case 4:
-					cout << "You are fully rested\n\n";
-					break;
-				default: break;
-			}
-		}
-	}
-
-	key = _getch();
-	value = key;
-
+	c->action();
 	cin >> x;
 	return 0;
-
-	
-
-
 }

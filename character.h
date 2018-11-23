@@ -13,6 +13,7 @@ public:
 	void pickclass();
 	void namechar();
 	void readstat();
+	void action();
 	virtual void setstat() = 0;
 	virtual void description() = 0;
 };
