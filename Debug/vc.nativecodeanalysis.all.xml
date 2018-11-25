@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?><DEFECTS><DEFECT>
+    <SFA>
+      <FILEPATH>c:\users\wilso\onedrive\c++\games\shiftedrealm\shifted realm\shifted realm\</FILEPATH>
+      <FILENAME>character.cpp</FILENAME>
+      <LINE>73</LINE>
+      <COLUMN>11</COLUMN>
+    </SFA>
+    <DEFECTCODE>26495</DEFECTCODE>
+    <DESCRIPTION>Variable 'character::defense' is uninitialized. Always initialize a member variable (type.6).</DESCRIPTION>
+    <FUNCTION>character::{ctor}</FUNCTION>
+    <DECORATED>??0character@@QAE@XZ</DECORATED>
+    <FUNCLINE>73</FUNCLINE>
+    <PATH></PATH>
+  </DEFECT></DEFECTS>

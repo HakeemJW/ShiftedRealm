@@ -7,8 +7,6 @@
 #include "Windows.h"
 #include "conio.h"
 
-
-
 using namespace std;
 int clas = 0;
 int x;

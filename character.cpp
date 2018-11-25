@@ -5,6 +5,8 @@
 
 using namespace std;
 int gold = 100;
+string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
+string current_location = location[0];
 
 void character::pickclass()
 {
@@ -12,7 +14,6 @@ void character::pickclass()
 	cout << endl;
 	cout << "Warrior (1) \t Rogue (2) \t Mage (3)" << endl;
 }
-
 
 void character::namechar()
 {
@@ -36,6 +37,7 @@ void character::action()
 	#define KEY_A 97
 	#define KEY_M 109
 	int x;
+	int j = 1;
 	char key = _getch();
 	int value = key;
 
@@ -53,7 +55,14 @@ void character::action()
 				cout << "You have " << gold << " gold\n\n";
 				break;
 			case 2:
+				cout << "You are currently located in " << current_location << ".\n\n";
 				cout << "Where would you like to go?\n\n";
+				for (int i = 0; i < 4; i++)
+				{
+					cout << location[i];
+					cout << " (" << j << ")\n\n";
+					j++;
+				}
 				break;
 			case 3:
 				cout << "What type of adventure do you seek?\n\n";
@@ -68,6 +77,11 @@ void character::action()
 
 	key = _getch();
 	value = key;
+}
+
+void character::print_location()
+{
+	cout << current_location << endl;
 }
 
 character::character()

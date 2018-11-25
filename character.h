@@ -5,15 +5,14 @@ class character
 public:
 	character();
 	~character();
-	int health, attack, defense;
-	int gold = 100;
+	int health, attack, defense, exp;
 	int clas = 0;
-	int exp;
 	int randnum = 0;
 	void pickclass();
 	void namechar();
 	void readstat();
 	void action();
+	void print_location();
 	virtual void setstat() = 0;
 	virtual void description() = 0;
 };
