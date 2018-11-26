@@ -37,7 +37,7 @@ void character::action()
 	#define KEY_A 97
 	#define KEY_M 109
 	int x;
-	int j = 1;
+	int j = 0;
 	char key = _getch();
 	int value = key;
 
@@ -55,6 +55,7 @@ void character::action()
 				cout << "You have " << gold << " gold\n\n";
 				break;
 			case 2:
+				int location_choice;
 				cout << "You are currently located in " << current_location << ".\n\n";
 				cout << "Where would you like to go?\n\n";
 				for (int i = 0; i < 4; i++)
@@ -63,6 +64,9 @@ void character::action()
 					cout << " (" << j << ")\n\n";
 					j++;
 				}
+				cin >> location_choice;
+				current_location = location[location_choice];
+				cout << "Your new location is " << current_location << "!\n\n";
 				break;
 			case 3:
 				cout << "What type of adventure do you seek?\n\n";
