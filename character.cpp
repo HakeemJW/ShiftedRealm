@@ -8,7 +8,7 @@ int gold = 100;
 string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
 string current_location = location[0];
 string weapons[4] = { "Sword", "Axe", "Daggar", "Mace" };
-string value[4] = { "15", "15", "10", "20" };
+string cost[4] = { "25", "15", "10", "20" };
 
 void character::pickclass()
 {
@@ -58,14 +58,17 @@ void character::action()
 				cout << "What do you desire?\n\n";
 				cout << "Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n\n";
 				int f;
+				cin >> f;
 				switch (f)
 				{
 				case 1:
 					for (int i = 0; i < 4; i++)
 					{
 						cout << weapons[i];
-						cout << " (" << value[i] << ")\n";
+						cout << " (" << cost[i] << ")\n";
 					}
+					break;
+				default: break;
 				}
 				break;
 			case 2:
