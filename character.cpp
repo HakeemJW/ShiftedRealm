@@ -64,6 +64,7 @@ void character::action()
 					cout << " (" << j << ")\n\n";
 					j++;
 				}
+				j = 0;
 				cin >> location_choice;
 				current_location = location[location_choice];
 				cout << "Your new location is " << current_location << "!\n\n";
