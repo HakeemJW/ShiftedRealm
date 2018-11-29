@@ -7,6 +7,8 @@ using namespace std;
 int gold = 100;
 string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
 string current_location = location[0];
+string weapons[4] = { "Sword", "Axe", "Daggar", "Mace" };
+string value[4] = { "15", "15", "10", "20" };
 
 void character::pickclass()
 {
@@ -53,6 +55,18 @@ void character::action()
 			{
 			case 1:
 				cout << "You have " << gold << " gold\n\n";
+				cout << "What do you desire?\n\n";
+				cout << "Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n\n";
+				int f;
+				switch (f)
+				{
+				case 1:
+					for (int i = 0; i < 4; i++)
+					{
+						cout << weapons[i];
+						cout << " (" << value[i] << ")\n";
+					}
+				}
 				break;
 			case 2:
 				int location_choice;
@@ -79,7 +93,6 @@ void character::action()
 			}
 		}
 	}
-
 	key = _getch();
 	value = key;
 }
