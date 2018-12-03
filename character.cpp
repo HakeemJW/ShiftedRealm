@@ -8,7 +8,10 @@ int gold = 100;
 string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
 string current_location = location[0];
 string weapons[4] = { "Sword", "Axe", "Daggar", "Mace" };
-string cost[4] = { "25", "15", "10", "20" };
+string cost[4] = { "10", "15", "20", "25" };
+string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
+string equipment[4] = { "Rope", "Torch", "Pole", "Hooks" };
+string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
 
 void character::pickclass()
 {
@@ -68,6 +71,27 @@ void character::action()
 						cout << " (" << cost[i] << ")\n";
 					}
 					break;
+				case 2:
+					for (int i = 0; i < 4; i++)
+					{
+						cout << armor[i];
+						cout << " (" << cost[i] << ")\n";
+					}
+					break;
+				case 3:
+					for (int i = 0; i < 4; i++)
+					{
+						cout << equipment[i];
+						cout << " (" << cost[i] << ")\n";
+					}
+					break;
+				case 4:
+					for (int i = 0; i < 4; i++)
+					{
+						cout << potions[i];
+						cout << " (" << cost[i] << ")\n";
+					}
+					break;
 				default: break;
 				}
 				break;
@@ -88,6 +112,19 @@ void character::action()
 				break;
 			case 3:
 				cout << "What type of adventure do you seek?\n\n";
+				cout << "Bounty(1) \t Dungeon Crawl(2)\n\n";
+				int fp; 
+				cin >> fp;
+				switch (fp)
+				{
+				case 1:
+					cout << "Here are the available bounties in this town.\n\n";
+					break;
+				case 2:
+					cout << "Here is a list of nearby dungeons.\n\n";
+					break;
+				default: break;
+				}
 				break;
 			case 4:
 				cout << "You are fully rested\n\n";
