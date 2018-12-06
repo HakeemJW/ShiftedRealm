@@ -6,6 +6,7 @@
 #include "story.h"
 #include "Windows.h"
 #include "conio.h"
+#include "combat.h"
 
 using namespace std;
 int clas = 0;
@@ -15,6 +16,7 @@ int main()
 {
 	story* s = nullptr;
 	character* c = nullptr;
+	combat* com = nullptr;
 	s->intro();
 	c->pickclass();
 	cin >> clas;
@@ -45,6 +47,7 @@ int main()
 	c->setstat();
 	c->readstat();
 	s->keycommands();
+	com->fight();
 	c->action();
 	cin >> x;
 	return 0;

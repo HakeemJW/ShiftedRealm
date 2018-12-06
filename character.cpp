@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "conio.h"
+#include "combat.h"
 
 using namespace std;
 int gold = 100;
@@ -12,6 +13,7 @@ string cost[4] = { "10", "15", "20", "25" };
 string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
 string equipment[4] = { "Rope", "Torch", "Pole", "Hooks" };
 string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
+
 
 void character::pickclass()
 {

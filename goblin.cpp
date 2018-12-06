@@ -16,7 +16,7 @@ goblin::~goblin()
 
 void goblin::e_description()
 {
-	cout << "You have chosen the path of the mage!" << endl;
+	cout << "A goblin appears" << endl;
 }
 
 void goblin::e_setstat()
