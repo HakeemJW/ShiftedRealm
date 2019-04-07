@@ -7,9 +7,12 @@
 #include "Windows.h"
 #include "conio.h"
 #include "combat.h"
+#include "goblin.h"
+
+/*main code*/
 
 using namespace std;
-int clas = 0;
+int clas;
 int x;
 
 int main()
@@ -48,7 +51,7 @@ int main()
 	c->readstat();
 	s->keycommands();
 	com->fight();
-	c->action();
+	//c->action();
 	cin >> x;
 	return 0;
 }

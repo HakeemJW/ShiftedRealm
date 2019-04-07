@@ -2,8 +2,9 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+/*This is where the stats and description for the warrior class lives.*/
 
+using namespace std;
 
 void warrior::description()
 {

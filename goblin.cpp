@@ -2,8 +2,9 @@
 #include <iostream>
 #include <string>
 
-using namespace std;
+/*The goblin enemy subclass*/
 
+using namespace std;
 
 goblin::goblin()
 {

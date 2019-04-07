@@ -8,8 +8,8 @@ public:
 	int health, attack, defense, exp;
 	int clas = 0;
 	int randnum = 0;
-	void pickclass();
-	void namechar();
+	void pickclass();	//Player Class Selection Menu
+	void namechar();	
 	void readstat();
 	void action();
 	void print_location();

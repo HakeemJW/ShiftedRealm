@@ -1,6 +1,8 @@
 #include "story.h"
 #include <iostream>
 
+/*This code is where the general opening text lives.*/
+
 using namespace std;
 
 void story::intro()

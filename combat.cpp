@@ -5,7 +5,7 @@
 #include <math.h>
 #include "goblin.h"
 using namespace std;
-
+/*This is a theoretical section of code that determines the flow of combat.*/
 enemy* e;
 character* c;
 
@@ -13,6 +13,7 @@ void combat::fight()
 {
 	goblin* g = new goblin();
 	e = g;
+	e->e_setstat();
 	int b;
 	while (e->e_health > 0)
 	{

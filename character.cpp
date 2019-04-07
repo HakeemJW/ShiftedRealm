@@ -4,6 +4,11 @@
 #include "conio.h"
 #include "combat.h"
 
+/*	
+	This is a large section of code that is used for controlling the character's actions.
+	Currently needs to be further simplified.
+*/
+
 using namespace std;
 int gold = 100;
 string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
