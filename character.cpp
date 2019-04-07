@@ -14,7 +14,7 @@ string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
 string equipment[4] = { "Rope", "Torch", "Pole", "Hooks" };
 string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
 
-
+//Player class selection
 void character::pickclass()
 {
 	cout << "What class would you like to play?" << endl;
@@ -22,6 +22,7 @@ void character::pickclass()
 	cout << "Warrior (1) \t Rogue (2) \t Mage (3)" << endl;
 }
 
+//Player names character
 void character::namechar()
 {
 	string name;
@@ -31,6 +32,7 @@ void character::namechar()
 	cout << "Your name is " << name << endl;
 }
 
+//Reads out character starting stats
 void character::readstat()
 {
 	cout << "Your health is " << health << endl;
@@ -40,6 +42,7 @@ void character::readstat()
 
 void character::action()
 {
+	//Defined ASCII key input
 	#define KEY_ESC 27
 	#define KEY_A 97
 	#define KEY_M 109
@@ -52,19 +55,19 @@ void character::action()
 	{
 		switch (_getch())
 		{
-		case KEY_M:
+		case KEY_M: //Opens Menu
 			cout << "What would you like to do\n\n";
 			cout << "Shop(1) \t Travel(2) \t Adventure(3) \t Rest(4)" << endl;
 			cin >> x;
 			switch (x)
 			{
-			case 1:
+			case 1: //Shopping Options
 				cout << "You have " << gold << " gold\n\n";
 				cout << "What do you desire?\n\n";
 				cout << "Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n\n";
 				int f;
 				cin >> f;
-				switch (f)
+				switch (f) // Prints list of all available items for purchase
 				{
 				case 1:
 					for (int i = 0; i < 4; i++)
@@ -97,7 +100,7 @@ void character::action()
 				default: break;
 				}
 				break;
-			case 2:
+			case 2: //Alow player to move between locations
 				int location_choice;
 				cout << "You are currently located in " << current_location << ".\n\n";
 				cout << "Where would you like to go?\n\n";
