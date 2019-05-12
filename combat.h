@@ -7,7 +7,7 @@ public:
 	
 	combat();
 	~combat();
-	void fight();
+	void fight(character* c);
 	
 };
 

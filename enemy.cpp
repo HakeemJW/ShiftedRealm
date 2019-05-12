@@ -1,14 +1,11 @@
 #include "enemy.h"
+#include <iostream>
 
 /*Actions for enemy characters*/
 
 using namespace std;
 
-enemy::enemy()
+void enemy::printstats()
 {
-}
-
-
-enemy::~enemy()
-{
+	cout << "Attack is " << e_health << endl;
 }
