@@ -50,8 +50,7 @@ int main()
 	c->setstat();
 	c->readstat();
 	s->keycommands();
-	com->fight(c);
-	c->action();
+	c->action(c);
 	cin >> x;
 	return 0;
 }

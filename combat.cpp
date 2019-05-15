@@ -29,6 +29,7 @@ void combat::fight(character* c)
 			e->e_health = (e->e_health - c->attack);
 		}
 		cout << "Health remaining: " << e->e_health << endl;
+		c->exp += e->e_exp;
 	}
 }
 

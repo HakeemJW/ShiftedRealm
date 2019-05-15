@@ -18,6 +18,7 @@ string cost[4] = { "10", "15", "20", "25" };
 string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
 string equipment[4] = { "Rope", "Torch", "Pole", "Hooks" };
 string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
+combat* com = nullptr;
 
 //Player class selection
 void character::pickclass()
@@ -45,7 +46,25 @@ void character::readstat()
 	cout << "Your defense is " << defense << endl;
 }
 
-void character::action()
+//Prints Character Equipped Items
+void character::print_equipped()
+{
+	cout << "Weapon Equipped: " << weapon_equipped << endl;
+	cout << "Armor Equipped: " << armor_equipped << endl;
+}
+
+//PRints Characters Owned Items
+void character::print_equipment_owned()
+{
+	cout << "Slot \tWeapons Owned \t Armor Owned \t Equipment\n";
+	for (int i = 0; i < 5; i++)
+	{
+		cout << "(" << i << ")" << "\t" << weapons_owned[i] << "\t" << armor_owned[i] << "\t" << equipment_owned[i] << endl;
+	}
+}
+
+//The Main UI
+void character::action(character* c)
 {
 	//Defined ASCII key input
 	#define KEY_ESC 27
@@ -62,7 +81,7 @@ void character::action()
 		{
 		case KEY_M: //Opens Menu
 			cout << "What would you like to do\n\n";
-			cout << "Shop(1) \t Travel(2) \t Adventure(3) \t Rest(4)" << endl;
+			cout << "Shop(1)  Travel(2)  Adventure(3)  Rest(4)  Check Stats(5)  Check Inventory(6)" << endl;
 			cin >> x;
 			switch (x)
 			{
@@ -75,11 +94,19 @@ void character::action()
 				switch (f) // Prints list of all available items for purchase
 				{
 				case 1:
+					int p;
 					for (int i = 0; i < 4; i++)
 					{
-						cout << weapons[i];
+						cout << "(" << i << ")" << weapons[i];
 						cout << " (" << cost[i] << ")\n";
 					}
+					//Making the item purchase
+					cout << "Which weapon would you like?\n";
+					cin >> p;
+					cout << "Which weapon slot would you like to overwrite?" << endl;
+					int n;
+					cin >> n;
+					weapons_owned[n] = weapons[p];
 					break;
 				case 2:
 					for (int i = 0; i < 4; i++)
@@ -120,7 +147,7 @@ void character::action()
 				current_location = location[location_choice];
 				cout << "Your new location is " << current_location << "!\n\n";
 				break;
-			case 3:
+			case 3://Story Progression
 				cout << "What type of adventure do you seek?\n\n";
 				cout << "Bounty(1) \t Dungeon Crawl(2)\n\n";
 				int fp; 
@@ -129,6 +156,7 @@ void character::action()
 				{
 				case 1:
 					cout << "Here are the available bounties in this town.\n\n";
+					com->fight(c);
 					break;
 				case 2:
 					cout << "Here is a list of nearby dungeons.\n\n";
@@ -139,6 +167,15 @@ void character::action()
 			case 4:
 				cout << "You are fully rested\n\n";
 				break;
+			case 5://Allows player to check stats manually
+				cout << "Health: " << c->health << endl;
+				cout << "Attack: " << c->attack << endl;
+				cout << "Defense: " << c->defense << endl;
+				cout << "Experience: " << c->exp << endl;
+				break;
+			case 6:
+				print_equipped();
+				print_equipment_owned();
 			default: break;
 			}
 		}
