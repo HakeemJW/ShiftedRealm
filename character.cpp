@@ -63,6 +63,44 @@ void character::print_equipment_owned()
 	}
 }
 
+void character::equip()
+{
+	int x,y;
+	char e;
+	cout << "Would you like to eqip an item? (Y/N)\n";
+	cin >> e;
+	if (e == 'Y' || e == 'y')
+	{
+		cout << "What would you like to equip?\n";
+		cout << "Weapons (1) \t Armor(2)\n";
+		cin >> x;
+		switch (x)
+		{
+			case 1:
+				for (int i = 0; i < 5; i++)
+				{
+					cout << "(" << i << ")" << "\t" << weapons_owned[i] << endl;
+				}
+				cout << "Which slot?\n";
+				cin >> y;
+				weapon_equipped = weapons_owned[y];
+				cout << weapon_equipped << " is now equipped.\n";
+				break;
+			case 2:
+				for (int i = 0; i < 5; i++)
+				{
+					cout << "(" << i << ")" << "\t" << armor_owned[i] << endl;
+				}
+				cout << "Which slot?\n";
+				cin >> y;
+				armor_equipped = armor_owned[y];
+				cout << armor_equipped << " is now equipped.\n";
+				break;
+		}
+				
+	}
+}
+
 //The Main UI
 void character::action(character* c)
 {
@@ -111,14 +149,14 @@ void character::action(character* c)
 				case 2:
 					for (int i = 0; i < 4; i++)
 					{
-						cout << armor[i];
+						cout << "(" << i << ")" << armor[i];
 						cout << " (" << cost[i] << ")\n";
 					}
 					break;
 				case 3:
 					for (int i = 0; i < 4; i++)
 					{
-						cout << equipment[i];
+						cout << "(" << i << ")" << equipment[i];
 						cout << " (" << cost[i] << ")\n";
 					}
 					break;
@@ -173,9 +211,10 @@ void character::action(character* c)
 				cout << "Defense: " << c->defense << endl;
 				cout << "Experience: " << c->exp << endl;
 				break;
-			case 6:
+			case 6://Allows Players to view and equip items
 				print_equipped();
 				print_equipment_owned();
+				equip();
 			default: break;
 			}
 		}

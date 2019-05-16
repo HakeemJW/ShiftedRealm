@@ -14,6 +14,7 @@ public:
 	void pickclass();	//Player Class Selection Menu
 	void namechar();	
 	void readstat();
+	void equip();
 	void print_equipped();
 	void print_equipment_owned();
 	void action(character* c);
