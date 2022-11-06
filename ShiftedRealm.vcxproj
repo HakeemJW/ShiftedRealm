@@ -71,7 +71,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\Hakeem\source\repos\ShiftedRealm\resources\include;C:\Users\Hakeem\source\repos\ShiftedRealm\resources\source;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\Hakeem\source\repos\ShiftedRealm\resources\include;C:\Users\Hakeem\source\repos\ShiftedRealm\resources\source;C:\Users\wilso\source\repos\ShiftedRealm\resources\include;C:\Users\wilso\source\repos\ShiftedRealm\resources\source;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
