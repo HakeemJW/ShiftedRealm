@@ -1,20 +1,16 @@
-#include <iostream>
 #include "character.h"
 #include "story.h"
-#include "Windows.h"
-#include "conio.h"
 #include "combat.h"
+#include <thread>
 
 
 /*main code*/
-
-int x;
-
 int main()
 {
 	story* s = nullptr;
 	character* c = nullptr;
 	combat* com = nullptr;
+	
 	s->intro();
 	c->pickclass(c);
 	c->description();
@@ -22,7 +18,9 @@ int main()
 	c->setstat();
 	c->readstat();
 	s->keycommands();
-	c->action(c);
-	std::cin >> x;
+	
+	std::thread inputThread(&character::action,c,c);
+	inputThread.join();
+	
 	return 0;
 }

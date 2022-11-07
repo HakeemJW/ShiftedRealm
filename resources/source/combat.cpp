@@ -1,11 +1,7 @@
 #include <iostream>
 #include "combat.h"
 #include "character.h"
-#include "warrior.h"
-#include "rogue.h"
-#include "mage.h"
 #include "enemy.h"
-#include <math.h>
 #include "goblin.h"
 #include <Log.h>
 

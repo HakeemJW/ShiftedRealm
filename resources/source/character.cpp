@@ -7,6 +7,8 @@
 #include "conio.h"
 #include "combat.h"
 #include <Log.h>
+#include <chrono>
+#include <thread>
 
 
 /*	
@@ -25,7 +27,7 @@ std::string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
 combat* com = nullptr;
 
 //Player class selection
-void character::pickclass(character* & c)
+void character::pickclass(character*& c)
 {
 	int clas;
 	Print("What class would you like to play?\n");
@@ -51,9 +53,13 @@ void character::pickclass(character* & c)
 		c = m;
 	}
 	break;
-	default: return;
+	default:
+	{
+		Print("Not a supported answer");
+		c->pickclass(c);
 	}
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	}
 }
 
 //Player names character
@@ -132,6 +138,7 @@ void character::equip()
 //The Main UI
 void character::action(character* c)
 {
+
 	//Defined ASCII key input
 	#define KEY_ESC 27
 	#define KEY_A 97
@@ -140,115 +147,121 @@ void character::action(character* c)
 	int j = 0;
 	char key = _getch();
 	int value = key;
-
-	while (value != KEY_ESC)
+	while (true)
 	{
-		switch (_getch())
+
+
+		while (value != KEY_ESC)
 		{
-		case KEY_M: //Opens Menu
-			Print("What would you like to do\n");
-			Print("Shop(1)  Travel(2)  Adventure(3)  Rest(4)  Check Stats(5)  Check Inventory(6)");
-			std::cin >> x;
-			switch (x)
+			switch (_getch())
 			{
-			case 1: //Shopping Options
-				std::cout << "You have " << gold << " gold\n\n";
-				Print("What do you desire?\n");
-				Print("Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n");
-				int f;
-				std::cin >> f;
-				switch (f) // Prints list of all available items for purchase
+			case KEY_M: //Opens Menu
+				Print("What would you like to do\n");
+				Print("Shop(1)  Travel(2)  Adventure(3)  Rest(4)  Check Stats(5)  Check Inventory(6)");
+				std::cin >> x;
+				switch (x)
 				{
-				case 1:
-					int p;
-					for (int i = 0; i < 4; i++)
+				case 1: //Shopping Options
+					std::cout << "You have " << gold << " gold\n\n";
+					Print("What do you desire?\n");
+					Print("Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n");
+					int f;
+					std::cin >> f;
+					switch (f) // Prints list of all available items for purchase
 					{
-						std::cout << "(" << i << ")" << weapons[i];
-						std::cout << " (" << cost[i] << ")\n";
+					case 1:
+						int p;
+						for (int i = 0; i < 4; i++)
+						{
+							std::cout << "(" << i << ")" << weapons[i];
+							std::cout << " (" << cost[i] << ")\n";
+						}
+						//Making the item purchase
+						Print("Which weapon would you like?");
+						std::cin >> p;
+						Print("Which weapon slot would you like to overwrite?");
+						int n;
+						std::cin >> n;
+						weapons_owned[n] = weapons[p];
+						break;
+					case 2:
+						for (int i = 0; i < 4; i++)
+						{
+							std::cout << "(" << i << ")" << armor[i];
+							std::cout << " (" << cost[i] << ")\n";
+						}
+						break;
+					case 3:
+						for (int i = 0; i < 4; i++)
+						{
+							std::cout << "(" << i << ")" << equipment[i];
+							std::cout << " (" << cost[i] << ")\n";
+						}
+						break;
+					case 4:
+						for (int i = 0; i < 4; i++)
+						{
+							Print(potions[i]);
+							std::cout << " (" << cost[i] << ")\n";
+						}
+						break;
+					default: break;
 					}
-					//Making the item purchase
-					Print("Which weapon would you like?");
-					std::cin >> p;
-					Print("Which weapon slot would you like to overwrite?");
-					int n;
-					std::cin >> n;
-					weapons_owned[n] = weapons[p];
 					break;
-				case 2:
+				case 2: //Alow player to move between locations
+					int location_choice;
+					Print2("You are currently located in ", current_location);
+					Print("Where would you like to go?\n");
 					for (int i = 0; i < 4; i++)
 					{
-						std::cout << "(" << i << ")" << armor[i];
-						std::cout << " (" << cost[i] << ")\n";
+						Print(location[i]);
+						std::cout << " (" << j << ")\n\n";
+						j++;
 					}
+					j = 0;
+					std::cin >> location_choice;
+					current_location = location[location_choice];
+					std::cout << "Your new location is " << current_location << "!\n\n";
 					break;
-				case 3:
-					for (int i = 0; i < 4; i++)
+				case 3://Story Progression
+					Print("What type of adventure do you seek?\n");
+					Print("Bounty(1) \t Dungeon Crawl(2)\n");
+					int fp;
+					std::cin >> fp;
+					switch (fp)
 					{
-						std::cout << "(" << i << ")" << equipment[i];
-						std::cout << " (" << cost[i] << ")\n";
+					case 1:
+						Print("Here are the available bounties in this town.\n");
+						com->fight(c);
+						break;
+					case 2:
+						Print("Here is a list of nearby dungeons.\n");
+						break;
+					default: break;
 					}
 					break;
 				case 4:
-					for (int i = 0; i < 4; i++)
-					{
-						Print(potions[i]);
-						std::cout << " (" << cost[i] << ")\n";
-					}
+					Print("You are fully rested\n");
 					break;
+				case 5://Allows player to check stats manually
+					Print2("Health: ", c->health);
+					Print2("Attack: ", c->attack);
+					Print2("Defense: ", c->defense);
+					Print2("Experience: ", c->exp);
+					break;
+				case 6://Allows Players to view and equip items
+					print_equipped();
+					print_equipment_owned();
+					equip();
 				default: break;
 				}
-				break;
-			case 2: //Alow player to move between locations
-				int location_choice;
-				Print2("You are currently located in ",current_location);
-				Print("Where would you like to go?\n");
-				for (int i = 0; i < 4; i++)
-				{
-					Print(location[i]);
-					std::cout << " (" << j << ")\n\n";
-					j++;
-				}
-				j = 0;
-				std::cin >> location_choice;
-				current_location = location[location_choice];
-				std::cout << "Your new location is " << current_location << "!\n\n";
-				break;
-			case 3://Story Progression
-				Print("What type of adventure do you seek?\n");
-				Print("Bounty(1) \t Dungeon Crawl(2)\n");
-				int fp; 
-				std::cin >> fp;
-				switch (fp)
-				{
-				case 1:
-					Print("Here are the available bounties in this town.\n");
-					com->fight(c);
-					break;
-				case 2:
-					Print("Here is a list of nearby dungeons.\n");
-					break;
-				default: break;
-				}
-				break;
-			case 4:
-				Print("You are fully rested\n");
-				break;
-			case 5://Allows player to check stats manually
-				Print2("Health: ",c->health);
-				Print2("Attack: ",c->attack);
-				Print2("Defense: ",c->defense);
-				Print2("Experience: ",c->exp);
-				break;
-			case 6://Allows Players to view and equip items
-				print_equipped();
-				print_equipment_owned();
-				equip();
-			default: break;
 			}
 		}
+		key = _getch();
+		value = key;
+
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
-	key = _getch();
-	value = key;
 }
 
 void character::print_location()
