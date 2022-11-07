@@ -18,7 +18,6 @@
 
 int gold = 100;
 std::string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
-std::string current_location = location[0];
 std::string weapons[4] = { "Sword", "Axe", "Daggar", "Mace" };
 std::string cost[4] = { "10", "15", "20", "25" };
 std::string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
@@ -29,11 +28,11 @@ combat* com = nullptr;
 //Player class selection
 void character::pickclass(character*& c)
 {
-	int clas;
+	int classChoice;
 	Print("What class would you like to play?\n");
 	Print("Warrior (1) \t Rogue (2) \t Mage (3)\n");
-	std::cin >> clas;
-	switch (clas)
+	std::cin >> classChoice;
+	switch (classChoice)
 	{
 	case 1:
 	{
@@ -211,7 +210,7 @@ void character::action(character* c)
 					break;
 				case 2: //Alow player to move between locations
 					int location_choice;
-					Print2("You are currently located in ", current_location);
+					Print2("You are currently located in ", currentLocation);
 					Print("Where would you like to go?\n");
 					for (int i = 0; i < 4; i++)
 					{
@@ -221,8 +220,8 @@ void character::action(character* c)
 					}
 					j = 0;
 					std::cin >> location_choice;
-					current_location = location[location_choice];
-					std::cout << "Your new location is " << current_location << "!\n\n";
+					currentLocation = location[location_choice];
+					std::cout << "Your new location is " << currentLocation << "!\n\n";
 					break;
 				case 3://Story Progression
 					Print("What type of adventure do you seek?\n");
@@ -267,11 +266,12 @@ void character::action(character* c)
 
 void character::print_location()
 {
-	Print(current_location);
+	Print(currentLocation);
 }
 
 character::character()
 {
+
 }
 
 

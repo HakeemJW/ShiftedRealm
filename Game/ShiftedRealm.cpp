@@ -1,25 +1,22 @@
 #include "character.h"
 #include "story.h"
-#include "combat.h"
 #include <thread>
-
 
 /*main code*/
 int main()
 {
 	story* s = nullptr;
-	character* c = nullptr;
-	combat* com = nullptr;
+	character* player = nullptr;
 	
 	s->intro();
-	c->pickclass(c);
-	c->description();
-	c->namechar();
-	c->setstat();
-	c->readstat();
+	player->pickclass(player);
+	player->description();
+	player->namechar();
+	player->setstat();
+	player->readstat();
 	s->keycommands();
 	
-	std::thread inputThread(&character::action,c,c);
+	std::thread inputThread(&character::action, player, player);
 	inputThread.join();
 	
 	return 0;

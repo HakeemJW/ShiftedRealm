@@ -8,6 +8,7 @@ public:
 	int health = 0, attack = 0, defense = 0, exp = 0;
 	std::string weapon_equipped, armor_equipped;
 	std::string weapons_owned[50], armor_owned[50], potions_owned[50], equipment_owned[50];
+	std::string currentLocation;
 	int clas = 0;
 	int randnum = 0;
 	void pickclass(character* & c);	//Player Class Selection Menu
