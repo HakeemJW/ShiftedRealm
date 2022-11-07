@@ -1,4 +1,7 @@
 #include "character.h"
+#include "warrior.h"
+#include "rogue.h"
+#include "mage.h"
 #include <iostream>
 #include <string>
 #include "conio.h"
@@ -22,10 +25,35 @@ std::string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
 combat* com = nullptr;
 
 //Player class selection
-void character::pickclass()
+void character::pickclass(character* & c)
 {
+	int clas;
 	Print("What class would you like to play?\n");
 	Print("Warrior (1) \t Rogue (2) \t Mage (3)\n");
+	std::cin >> clas;
+	switch (clas)
+	{
+	case 1:
+	{
+		warrior* w = new warrior();
+		c = w;
+	}
+	break;
+	case 2:
+	{
+		rogue* r = new rogue();
+		c = r;
+	}
+	break;
+	case 3:
+	{
+		mage* m = new mage();
+		c = m;
+	}
+	break;
+	default: return;
+	}
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
 }
 
 //Player names character

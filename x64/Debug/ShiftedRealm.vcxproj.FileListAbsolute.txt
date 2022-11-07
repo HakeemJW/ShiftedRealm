@@ -1,1 +1,2 @@
 C:\Users\Hakeem\source\repos\ShiftedRealm\x64\Debug\ShiftedRealm.exe
+C:\Users\wilso\source\repos\ShiftedRealm\x64\Debug\ShiftedRealm.exe

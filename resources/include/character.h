@@ -10,7 +10,7 @@ public:
 	std::string weapons_owned[50], armor_owned[50], potions_owned[50], equipment_owned[50];
 	int clas = 0;
 	int randnum = 0;
-	void pickclass();	//Player Class Selection Menu
+	void pickclass(character* & c);	//Player Class Selection Menu
 	void namechar();	
 	void readstat();
 	void equip();
