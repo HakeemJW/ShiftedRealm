@@ -144,7 +144,7 @@ void character::action(character* c)
 	#define KEY_A 97
 	#define KEY_M 109
 	int x;
-	int j = 0;
+	//int j = 0;
 	char key = _getch();
 	int value = key;
 	while (true)
@@ -209,19 +209,7 @@ void character::action(character* c)
 					}
 					break;
 				case 2: //Alow player to move between locations
-					int location_choice;
-					Print2("You are currently located in ", currentLocation);
-					Print("Where would you like to go?\n");
-					for (int i = 0; i < 4; i++)
-					{
-						Print(location[i]);
-						std::cout << " (" << j << ")\n\n";
-						j++;
-					}
-					j = 0;
-					std::cin >> location_choice;
-					currentLocation = location[location_choice];
-					std::cout << "Your new location is " << currentLocation << "!\n\n";
+					changeLocation();
 					break;
 				case 3://Story Progression
 					Print("What type of adventure do you seek?\n");
@@ -241,13 +229,10 @@ void character::action(character* c)
 					}
 					break;
 				case 4:
-					Print("You are fully rested\n");
+					Rest();
 					break;
 				case 5://Allows player to check stats manually
-					Print2("Health: ", c->health);
-					Print2("Attack: ", c->attack);
-					Print2("Defense: ", c->defense);
-					Print2("Experience: ", c->exp);
+					printStats(c);
 					break;
 				case 6://Allows Players to view and equip items
 					print_equipped();
@@ -277,4 +262,35 @@ character::character()
 
 character::~character()
 {
+}
+
+void character::changeLocation()
+{
+	int location_choice;
+	int j = 0;
+	Print2("You are currently located in ", currentLocation);
+	Print("Where would you like to go?\n");
+	for (int i = 0; i < 4; i++)
+	{
+		Print(location[i]);
+		std::cout << " (" << j << ")\n\n";
+		j++;
+	}
+	j = 0;
+	std::cin >> location_choice;
+	currentLocation = location[location_choice];
+	std::cout << "Your new location is " << currentLocation << "!\n\n";
+}
+
+void character::printStats(character* c)
+{
+	Print2("Health: ", c->health);
+	Print2("Attack: ", c->attack);
+	Print2("Defense: ", c->defense);
+	Print2("Experience: ", c->exp);
+}
+
+void character::Rest()
+{
+	Print("You are fully rested\n");
 }
