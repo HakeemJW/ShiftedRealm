@@ -65,6 +65,7 @@ void character::pickclass(character*& c)
 //Player names character
 void character::namechar()
 {
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 	std::string name;
 	Print("What is your name?");
 	std::getline(std::cin,name);
