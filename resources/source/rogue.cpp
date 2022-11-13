@@ -5,20 +5,25 @@
 
 void rogue::setstat()
 {
-	health = 80;
+	/*health = 80;
 	attack = 10;
 	defense = 2;
-	exp = 0;
+	exp = 0;*/
 }
 
 void rogue::description()
 {
-	Print("You have chosen the path of the rogue!");
+	/*Print("You have chosen the path of the rogue!");*/
 }
 
 
 rogue::rogue()
 {
+	Print("You have chosen the path of the rogue!");
+	health = 80;
+	attack = 10;
+	defense = 2;
+	exp = 0;
 }
 
 

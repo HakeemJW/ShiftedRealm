@@ -191,9 +191,9 @@ void character::action(character* c)
 	}
 }
 
-void character::print_location()
+void character::print_location(character* c)
 {
-	Print(currentLocation);
+	Print(c->currentLocation);
 }
 
 character::character()
@@ -308,8 +308,6 @@ void character::storyProgression(character* c)
 void character::loadCharacter(character* &c)
 {
 	c->pickclass(c);
-	c->description();
 	c->namechar();
-	c->setstat();
 	c->readstat();
 }

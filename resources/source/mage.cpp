@@ -5,20 +5,25 @@
 
 void mage::description()
 {
-	Print("You have chosen the path of the mage!");
+	/*Print("You have chosen the path of the mage!");*/
 }
 
 void mage::setstat()
 {
-	health = 60;
+	/*health = 60;
 	attack = 14;
 	defense = 0;
-	exp = 0;
+	exp = 0;*/
 }
 
 
 mage::mage()
 {
+	Print("You have chosen the path of the mage!");
+	health = 60;
+	attack = 14;
+	defense = 0;
+	exp = 0;
 }
 
 
