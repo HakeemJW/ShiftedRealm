@@ -162,71 +162,13 @@ void character::action(character* c)
 				switch (x)
 				{
 				case 1: //Shopping Options
-					std::cout << "You have " << gold << " gold\n\n";
-					Print("What do you desire?\n");
-					Print("Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n");
-					int f;
-					std::cin >> f;
-					switch (f) // Prints list of all available items for purchase
-					{
-					case 1:
-						int p;
-						for (int i = 0; i < 4; i++)
-						{
-							std::cout << "(" << i << ")" << weapons[i];
-							std::cout << " (" << cost[i] << ")\n";
-						}
-						//Making the item purchase
-						Print("Which weapon would you like?");
-						std::cin >> p;
-						Print("Which weapon slot would you like to overwrite?");
-						int n;
-						std::cin >> n;
-						weapons_owned[n] = weapons[p];
-						break;
-					case 2:
-						for (int i = 0; i < 4; i++)
-						{
-							std::cout << "(" << i << ")" << armor[i];
-							std::cout << " (" << cost[i] << ")\n";
-						}
-						break;
-					case 3:
-						for (int i = 0; i < 4; i++)
-						{
-							std::cout << "(" << i << ")" << equipment[i];
-							std::cout << " (" << cost[i] << ")\n";
-						}
-						break;
-					case 4:
-						for (int i = 0; i < 4; i++)
-						{
-							Print(potions[i]);
-							std::cout << " (" << cost[i] << ")\n";
-						}
-						break;
-					default: break;
-					}
+					shop();
 					break;
 				case 2: //Alow player to move between locations
-					changeLocation();
+					changeLocation(c);
 					break;
 				case 3://Story Progression
-					Print("What type of adventure do you seek?\n");
-					Print("Bounty(1) \t Dungeon Crawl(2)\n");
-					int fp;
-					std::cin >> fp;
-					switch (fp)
-					{
-					case 1:
-						Print("Here are the available bounties in this town.\n");
-						com->fight(c);
-						break;
-					case 2:
-						Print("Here is a list of nearby dungeons.\n");
-						break;
-					default: break;
-					}
+					storyProgression(c);
 					break;
 				case 4:
 					Rest();
@@ -264,22 +206,22 @@ character::~character()
 {
 }
 
-void character::changeLocation()
+void character::changeLocation(character* c)
 {
 	int location_choice;
 	int j = 0;
-	Print2("You are currently located in ", currentLocation);
+	Print2("You are currently located in ", c->currentLocation);
 	Print("Where would you like to go?\n");
 	for (int i = 0; i < 4; i++)
 	{
 		Print(location[i]);
 		std::cout << " (" << j << ")\n\n";
-		j++;
+		j++; 
 	}
 	j = 0;
 	std::cin >> location_choice;
-	currentLocation = location[location_choice];
-	std::cout << "Your new location is " << currentLocation << "!\n\n";
+	c->currentLocation = location[location_choice];
+	std::cout << "Your new location is " << c->currentLocation << "!\n\n";
 }
 
 void character::printStats(character* c)
@@ -293,4 +235,81 @@ void character::printStats(character* c)
 void character::Rest()
 {
 	Print("You are fully rested\n");
+}
+
+void character::shop()
+{
+	std::cout << "You have " << gold << " gold\n\n";
+	Print("What do you desire?\n");
+	Print("Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n");
+	int f;
+	std::cin >> f;
+	switch (f) // Prints list of all available items for purchase
+	{
+	case 1:
+		int p;
+		for (int i = 0; i < 4; i++)
+		{
+			std::cout << "(" << i << ")" << weapons[i];
+			std::cout << " (" << cost[i] << ")\n";
+		}
+		//Making the item purchase
+		Print("Which weapon would you like?");
+		std::cin >> p;
+		Print("Which weapon slot would you like to overwrite?");
+		int n;
+		std::cin >> n;
+		weapons_owned[n] = weapons[p];
+		break;
+	case 2:
+		for (int i = 0; i < 4; i++)
+		{
+			std::cout << "(" << i << ")" << armor[i];
+			std::cout << " (" << cost[i] << ")\n";
+		}
+		break;
+	case 3:
+		for (int i = 0; i < 4; i++)
+		{
+			std::cout << "(" << i << ")" << equipment[i];
+			std::cout << " (" << cost[i] << ")\n";
+		}
+		break;
+	case 4:
+		for (int i = 0; i < 4; i++)
+		{
+			Print(potions[i]);
+			std::cout << " (" << cost[i] << ")\n";
+		}
+		break;
+	default: break;
+	}
+}
+
+void character::storyProgression(character* c)
+{
+	Print("What type of adventure do you seek?\n");
+	Print("Bounty(1) \t Dungeon Crawl(2)\n");
+	int fp;
+	std::cin >> fp;
+	switch (fp)
+	{
+	case 1:
+		Print("Here are the available bounties in this town.\n");
+		com->fight(c);
+		break;
+	case 2:
+		Print("Here is a list of nearby dungeons.\n");
+		break;
+	default: break;
+	}
+}
+
+void character::loadCharacter(character* &c)
+{
+	c->pickclass(c);
+	c->description();
+	c->namechar();
+	c->setstat();
+	c->readstat();
 }

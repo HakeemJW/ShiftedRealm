@@ -9,15 +9,9 @@ int main()
 	character* player = nullptr;
 	
 	s->intro();
-	player->pickclass(player);
-	player->description();
-	player->namechar();
-	player->setstat();
-	player->readstat();
-	s->keycommands();
-	
+	player->loadCharacter(player);
+	s->keycommands();	
 	std::thread inputThread(&character::action, player, player);
 	inputThread.join();
-	
 	return 0;
 }
