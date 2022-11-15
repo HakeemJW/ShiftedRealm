@@ -9,10 +9,10 @@ public:
 	void changeLocation(character* c);
 	void printStats(character* c);
 	void Rest();
-	void shop();
+	void shop(character* c);
 	void storyProgression(character* c);
 	void loadCharacter(character* &c);
-	int health = 0, attack = 0, defense = 0, exp = 0;
+	int health = 0, attack = 0, defense = 0, exp = 0, gold = 100;
 	std::string weapon_equipped, armor_equipped;
 	std::string weapons_owned[50], armor_owned[50], potions_owned[50], equipment_owned[50];
 	std::string currentLocation;

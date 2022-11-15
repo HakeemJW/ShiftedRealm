@@ -9,20 +9,13 @@
 #include <Log.h>
 #include <chrono>
 #include <thread>
-
+#include <items.h>
 
 /*	
 	This is a large section of code that is used for controlling the character's actions.
 	Currently needs to be further simplified.
 */
 
-int gold = 100;
-std::string location[4] = { "Dornin", "Fanrir", "Jagel", "Winona" };
-std::string weapons[4] = { "Sword", "Axe", "Daggar", "Mace" };
-std::string cost[4] = { "10", "15", "20", "25" };
-std::string armor[4] = {"Chain Mail", "Plate Mail", "Full Plate", "Robes"};
-std::string equipment[4] = { "Rope", "Torch", "Pole", "Hooks" };
-std::string potions[4] = { "Healing", "Fire Breathing", "Stealth", "Strength" };
 combat* com = nullptr;
 
 //Player class selection
@@ -162,7 +155,7 @@ void character::action(character* c)
 				switch (x)
 				{
 				case 1: //Shopping Options
-					shop();
+					shop(c);
 					break;
 				case 2: //Alow player to move between locations
 					changeLocation(c);
@@ -237,9 +230,9 @@ void character::Rest()
 	Print("You are fully rested\n");
 }
 
-void character::shop()
+void character::shop(character * c)
 {
-	std::cout << "You have " << gold << " gold\n\n";
+	std::cout << "You have " << c->gold << " gold\n\n";
 	Print("What do you desire?\n");
 	Print("Weapons (1) \t Armor(2) \t Equipment(3) \t Potions(4)\n");
 	int f;
@@ -310,4 +303,5 @@ void character::loadCharacter(character* &c)
 	c->pickclass(c);
 	c->namechar();
 	c->readstat();
+	Print("Press M at any time to open the menu.\n");
 }

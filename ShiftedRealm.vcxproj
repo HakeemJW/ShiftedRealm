@@ -145,6 +145,7 @@
     <ClInclude Include="resources\include\combat.h" />
     <ClInclude Include="resources\include\enemy.h" />
     <ClInclude Include="resources\include\goblin.h" />
+    <ClInclude Include="resources\include\items.h" />
     <ClInclude Include="resources\include\Log.h" />
     <ClInclude Include="resources\include\mage.h" />
     <ClInclude Include="resources\include\rogue.h" />

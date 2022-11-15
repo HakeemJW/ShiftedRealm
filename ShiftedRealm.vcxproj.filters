@@ -71,5 +71,8 @@
     <ClInclude Include="resources\include\Log.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="resources\include\items.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

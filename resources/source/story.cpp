@@ -15,7 +15,7 @@ void story::intro()
 
 void story::keycommands()
 {
-	Print("Press M at any time to open the menu.\n");
+	/*Print("Press M at any time to open the menu.\n");*/
 }
 
 story::story()

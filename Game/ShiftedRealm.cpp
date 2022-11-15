@@ -10,7 +10,6 @@ int main()
 	
 	s->intro();
 	player->loadCharacter(player);
-	s->keycommands();	
 	std::thread inputThread(&character::action, player, player);
 	inputThread.join();
 	return 0;

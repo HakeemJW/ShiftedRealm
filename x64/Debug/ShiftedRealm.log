@@ -1,5 +1,9 @@
-﻿  character.cpp
+﻿  ShiftedRealm.cpp
+  character.cpp
+  combat.cpp
   mage.cpp
   rogue.cpp
+  story.cpp
+  warrior.cpp
   Generating Code...
   ShiftedRealm.vcxproj -> C:\Users\wilso\source\repos\ShiftedRealm\x64\Debug\ShiftedRealm.exe
