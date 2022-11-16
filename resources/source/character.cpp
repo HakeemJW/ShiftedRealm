@@ -3,7 +3,6 @@
 #include "rogue.h"
 #include "mage.h"
 #include <iostream>
-#include <string>
 #include "conio.h"
 #include "combat.h"
 #include <Log.h>
