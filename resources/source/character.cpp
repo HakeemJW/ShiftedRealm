@@ -27,12 +27,6 @@ character::~character()
 {
 }
 
-/**
- * Player class selection.
- *
- * @param Player object to be overwritten by subclass.
- * @return None.
- */
 void character::pickclass(character*& c)
 {
 	int classChoice;
@@ -68,13 +62,6 @@ void character::pickclass(character*& c)
 	}
 }
 
-
-/**
- * Player names character.
- *
- * @param None.
- * @return None.
- */
 void character::namechar()
 {
 	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -85,13 +72,6 @@ void character::namechar()
 	Print2("Your name is ",name);
 }
 
-
-/**
- * Reads out character starting stats
- *
- * @param None.
- * @return None.
- */
 void character::readstat()
 {
 	Print2("Your health is ", health);
@@ -99,26 +79,12 @@ void character::readstat()
 	Print2("Your defense is ", defense);
 }
 
-
-/**
- * Prints Character Equipped Items
- *
- * @param None.
- * @return None.
- */
 void character::print_equipped()
 {
 	Print2("Weapon Equipped: ", weapon_equipped);
 	Print2("Armor Equipped: ",armor_equipped);
 }
 
-
-/**
- * Prints Characters Owned Items
- *
- * @param None.
- * @return None.
- */
 void character::print_equipment_owned()
 {
 	Print("Slot \tWeapons Owned \t Armor Owned \t Equipment\n");
@@ -128,12 +94,6 @@ void character::print_equipment_owned()
 	}
 }
 
-/**
- * Gives player the option to equip items.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::equip()
 {
 	int equipChoice,equipSlot;
@@ -171,12 +131,6 @@ void character::equip()
 	}
 }
 
-/**
- * Opens menu with different action options.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::action(character* c)
 {
 
@@ -231,25 +185,11 @@ void character::action(character* c)
 	}
 }
 
-
-/**
- * Print player's location.
- *
- * @param player object.
- * @return None.
- */
 void character::print_location(character* c)
 {
 	Print(c->currentLocation);
 }
 
-
-/**
- * Changes player's location.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::changeLocation(character* c)
 {
 	int location_choice;
@@ -268,12 +208,6 @@ void character::changeLocation(character* c)
 	std::cout << "Your new location is " << c->currentLocation << "!\n\n";
 }
 
-/**
- * Prints player's stats.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::printStats(character* c)
 {
 	Print2("Health: ", c->health);
@@ -282,24 +216,11 @@ void character::printStats(character* c)
 	Print2("Experience: ", c->exp);
 }
 
-
-/**
- * Resets players HP and MP.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::Rest()
 {
 	Print("You are fully rested\n");
 }
 
-/**
- * Opens generic shopping menu.
- *
- * @param player object to be modified.
- * @return None.
- */
 void character::shop(character * c)
 {
 	std::cout << "You have " << c->gold << " gold\n\n";
@@ -349,12 +270,6 @@ void character::shop(character * c)
 	}
 }
 
-/**
- * Story progression menu
- *
- * @param player object.
- * @return None.
- */
 void character::storyProgression(character* c)
 {
 	Print("What type of adventure do you seek?\n");
@@ -374,12 +289,6 @@ void character::storyProgression(character* c)
 	}
 }
 
-/**
- * Load new or existing character
- *
- * @param player object.
- * @return None.
- */
 void character::loadCharacter(character* &c)
 {
 	c->pickclass(c);
